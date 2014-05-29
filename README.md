@@ -6,7 +6,6 @@ This is a simple side menu for iOS
 Based on the UITableView, this menu provides a simple approach of creating a side menu for iOS apps.
 
 <img src="https://raw.githubusercontent.com/balram3429/btSimpleSideMenu/master/btSimpleSideMenuDemo/raw/iOS%20Simulator%20Screen%20shot%2029-May-2014%206.21.59%20pm.png" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
-
 <img src="https://raw.githubusercontent.com/balram3429/btSimpleSideMenu/master/btSimpleSideMenuDemo/raw/iOS%20Simulator%20Screen%20shot%2029-May-2014%206.22.02%20pm.png" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
 
 ## Requirements
