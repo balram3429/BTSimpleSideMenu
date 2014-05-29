@@ -21,18 +21,19 @@ Build and run the `btSimpleSideMenuDemo` project in Xcode to see `btSimpleSideMe
   1. Drag the file `btSimpleSideMenu.h` and `'btSimpleSideMenu.m` to your project folder.
   2. Maken an import statement for the file as `#import"btSimpleSideMenu.h"` .
   3. Add to your project the `QuartzCore framework`.
-  4. Now initialize the menu with the following two ways : 
-      1. In your viewController, use this method to initialize the menu with the titles only.
-                 
-        `-(instancetype) initWithItemTitles:(NSArray *)itemsTitle addToViewController:(id)sender;`
+  4. In your viewController, use these method to initialize the menu with the titles & images as well.
 
 ```objective-c
-btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"];
+-(instancetype) initWithItemTitles:(NSArray *)itemsTitle addToViewController:(id)sender;
+-(instancetype) initWithItemTitles:(NSArray *)itemsTitle andItemImages:(NSArray *)itemsImage addToViewController:(UIViewController *)sender;
 ```
-      2. Use this initializer method to initialize menu with the titles & images as well, 
-      
-    `-(instancetype) initWithItemTitles:(NSArray *)itemsTitle andItemImages:(NSArray *)itemsImage addToViewController:(UIViewController *)sender;`
-    
+
+  
+```objective-c
+btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"] addToViewController:self];
+ [sideMenu show];
+```
+
 ```objective-c
 btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"]
                                              andItemImages:@[
@@ -46,12 +47,8 @@ btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One
                                                              ]
                                        addToViewController:self];
     sideMenu.delegate = self;
-
+     [sideMenu show];
 ```
-
-      3. Use the below call to show the menu.
-      `[sideMenu show];`
-
 You can implement `btSimpleSideMenuDelegate` protocol to receive the following messages:
 
 ```objective-c
