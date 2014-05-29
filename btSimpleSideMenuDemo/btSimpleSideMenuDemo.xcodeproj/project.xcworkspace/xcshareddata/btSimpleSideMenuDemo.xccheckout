@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>60E6775D-3DB0-404A-9338-FD0DAB6F0E26</string>
+	<key>IDESourceControlProjectName</key>
+	<string>btSimpleSideMenuDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>63B8C65B-5F0F-473E-858C-E34B4DC6A7CB</key>
+		<string>https://github.com/balram3429/btSimpleSideMenu.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>btSimpleSideMenuDemo/btSimpleSideMenuDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>63B8C65B-5F0F-473E-858C-E34B4DC6A7CB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/balram3429/btSimpleSideMenu.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>63B8C65B-5F0F-473E-858C-E34B4DC6A7CB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>63B8C65B-5F0F-473E-858C-E34B4DC6A7CB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>btSimpleSideMenu</string>
+		</dict>
+	</array>
+</dict>
+</plist>
