@@ -9,6 +9,7 @@ Based on the UITableView, this menu provides a simple approach of creating a sid
 
 <img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen2.jpg" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
 
+
 ## Requirements
 * Xcode 5 or higher
 * Apple LLVM compiler
@@ -16,12 +17,12 @@ Based on the UITableView, this menu provides a simple approach of creating a sid
 * ARC
 
 ## Demo
-Build and run the `btSimpleSideMenuDemo` project in Xcode to see `btSimpleSideMenu` in action.
+Build and run the `btSimpleSideMenuDemo` project in Xcode to see `btSimpleSideMenu` in action. The project by default uses left & right swipes to show and hide the menu & a doubble tap gesture to toggle the state.
 
 ## Installation
   1. Drag the file `btSimpleSideMenu.h` and `'btSimpleSideMenu.m` to your project folder.
   2. Maken an import statement for the file as `#import"btSimpleSideMenu.h"` .
-  3. Add to your project the `QuartzCore framework`.
+  3. Add to your project the `QuartzCore framework` & `Accelerate Framework`.
   4. In your viewController, use these method to initialize the menu with the titles & images as well.
 
 ```objective-c
@@ -32,7 +33,7 @@ Build and run the `btSimpleSideMenuDemo` project in Xcode to see `btSimpleSideMe
   
 ```objective-c
 btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"] addToViewController:self];
- [sideMenu toggleMenu];
+[sideMenu toggleMenu];
 ```
 
 ```objective-c
@@ -48,7 +49,7 @@ btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One
                                                              ]
                                        addToViewController:self];
     sideMenu.delegate = self;
-     [sideMenu toggleMenu];
+    [sideMenu toggleMenu];
 ```
 You can implement `btSimpleSideMenuDelegate` protocol to receive the following messages:
 
