@@ -5,8 +5,8 @@ This is a simple side menu for iOS
 
 Based on the UITableView, this menu provides a simple approach of creating a side menu for iOS apps.
 
-<img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen1.png" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
-<img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen2.png" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
+<img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen1.jpg" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
+<img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen2.jpg" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
 
 ## Requirements
 * Xcode 5 or higher
@@ -31,7 +31,7 @@ Build and run the `btSimpleSideMenuDemo` project in Xcode to see `btSimpleSideMe
   
 ```objective-c
 btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"] addToViewController:self];
- [sideMenu show];
+ [sideMenu toggleMenu];
 ```
 
 ```objective-c
@@ -47,7 +47,7 @@ btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One
                                                              ]
                                        addToViewController:self];
     sideMenu.delegate = self;
-     [sideMenu show];
+     [sideMenu toggleMenu];
 ```
 You can implement `btSimpleSideMenuDelegate` protocol to receive the following messages:
 
