@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Accelerate/Accelerate.h>
 
 @class btSimpleSideMenu;
 
@@ -19,7 +20,14 @@
 
 @end
 
+@interface UIView (btSimpleSideMenu)
+- (UIImage *)superScreenshot:(UIView *)sender;
+@end
 
+@interface UIImage (btSimpleSideMenu)
+- (UIImage *)screenshot;
+- (UIImage *)blurredImageWithRadius:(CGFloat)radius iterations:(NSUInteger)iterations tintColor:(UIColor *)tintColor;
+@end
 
 @interface btSimpleSideMenu : UIView<UITableViewDelegate, UITableViewDataSource> {
     @private
@@ -29,7 +37,11 @@
     NSArray *imageArray;
     BOOL isOpen;
     UITapGestureRecognizer *gesture;
-    UIImageView *blurredImageView;
+    UISwipeGestureRecognizer *leftSwipe, *rightSwipe;
+    UIImage *blurredImage;
+    UIImageView *backGroundImage;
+    UIImage *screenShotImage;
+    UIImageView *screenShotView;
     
 }
 
@@ -40,4 +52,5 @@
 
 -(void)show;
 -(void)hide;
+-(void)toggleMenu;
 @end

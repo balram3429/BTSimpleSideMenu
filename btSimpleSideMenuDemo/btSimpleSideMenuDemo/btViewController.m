@@ -49,8 +49,6 @@
     sideMenu.delegate = self;
     sideMenu.userInteractionEnabled = YES;
     
-    [self performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:NO];
-    
 }
 
 -(UIImage *)bgView{
@@ -59,7 +57,7 @@
 }
 
 -(void)show{
-    [sideMenu show];
+    [sideMenu toggleMenu];
 }
 
 - (void)didReceiveMemoryWarning

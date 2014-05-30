@@ -30,7 +30,7 @@
 		4E5F22D11937312F00390188 /* icon5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5F22CA1937312F00390188 /* icon5.jpeg */; };
 		4E5F22D21937312F00390188 /* icon6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5F22CB1937312F00390188 /* icon6.jpeg */; };
 		4E5F22D31937312F00390188 /* icon7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5F22CC1937312F00390188 /* icon7.jpeg */; };
-		4E5F22D91937477900390188 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F22D81937477900390188 /* FXBlurView.m */; };
+		4E931AC01938490E000DAD4B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5F22D41937406800390188 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +74,6 @@
 		4E5F22CB1937312F00390188 /* icon6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon6.jpeg; path = images/icon6.jpeg; sourceTree = "<group>"; };
 		4E5F22CC1937312F00390188 /* icon7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon7.jpeg; path = images/icon7.jpeg; sourceTree = "<group>"; };
 		4E5F22D41937406800390188 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		4E5F22D71937477900390188 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		4E5F22D81937477900390188 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E931AC01938490E000DAD4B /* Accelerate.framework in Frameworks */,
 				4E5F22C419372D5E00390188 /* QuartzCore.framework in Frameworks */,
 				4E5F22881936F6B900390188 /* CoreGraphics.framework in Frameworks */,
 				4E5F228A1936F6B900390188 /* UIKit.framework in Frameworks */,
@@ -106,7 +105,6 @@
 		4E5F22791936F6B900390188 = {
 			isa = PBXGroup;
 			children = (
-				4E5F22D61937477900390188 /* FXBlurView */,
 				4E5F22C51937311F00390188 /* images */,
 				4E5F22B91936F9EF00390188 /* btSimpleSideMenu */,
 				4E5F228B1936F6B900390188 /* btSimpleSideMenuDemo */,
@@ -202,16 +200,6 @@
 				4E5F22B71936F8F600390188 /* backGround.jpg */,
 			);
 			name = images;
-			sourceTree = "<group>";
-		};
-		4E5F22D61937477900390188 /* FXBlurView */ = {
-			isa = PBXGroup;
-			children = (
-				4E5F22D71937477900390188 /* FXBlurView.h */,
-				4E5F22D81937477900390188 /* FXBlurView.m */,
-			);
-			name = FXBlurView;
-			path = btSimpleSideMenuDemo/FXBlurView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +308,6 @@
 			files = (
 				4E5F22961936F6B900390188 /* btAppDelegate.m in Sources */,
 				4E5F22921936F6B900390188 /* main.m in Sources */,
-				4E5F22D91937477900390188 /* FXBlurView.m in Sources */,
 				4E5F22B61936F76E00390188 /* btViewController.m in Sources */,
 				4E5F22BF1936FCEE00390188 /* btSimpleSideMenu.m in Sources */,
 			);
@@ -519,6 +506,7 @@
 				4E5F22B01936F6B900390188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E5F22B11936F6B900390188 /* Build configuration list for PBXNativeTarget "btSimpleSideMenuDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +515,7 @@
 				4E5F22B31936F6B900390188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
