@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <QuartzCore/QuartzCore.h>
-#import <Accelerate/Accelerate.h>
+#import "btSimpleMenuItem.h"
 
 @class btSimpleSideMenu;
 
@@ -20,12 +19,12 @@
 
 @end
 
-@interface UIView (btSimpleSideMenu)
-- (UIImage *)superScreenshot:(UIView *)sender;
+@interface UIView (bt_screenshot)
+- (UIImage *)screenshot;
+
 @end
 
-@interface UIImage (btSimpleSideMenu)
-- (UIImage *)screenshot;
+@interface UIImage (bt_blurrEffect)
 - (UIImage *)blurredImageWithRadius:(CGFloat)radius iterations:(NSUInteger)iterations tintColor:(UIColor *)tintColor;
 @end
 
@@ -35,6 +34,7 @@
     CGFloat xAxis, yAxis,height, width;
     NSArray *titleArray;
     NSArray *imageArray;
+    NSArray *itemsArray;
     BOOL isOpen;
     UITapGestureRecognizer *gesture;
     UISwipeGestureRecognizer *leftSwipe, *rightSwipe;
@@ -45,8 +45,10 @@
     
 }
 
+@property (nonatomic, retain) btSimpleMenuItem *selectedItem;
 @property(nonatomic, weak) id <btSimpleSideMenuDelegate> delegate;
 
+-(instancetype) initWithItem:(NSArray *)items addToViewController:(id)sender;
 -(instancetype) initWithItemTitles:(NSArray *)itemsTitle addToViewController:(id)sender;
 -(instancetype) initWithItemTitles:(NSArray *)itemsTitle andItemImages:(NSArray *)itemsImage addToViewController:(UIViewController *)sender;
 

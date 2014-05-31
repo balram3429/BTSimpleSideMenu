@@ -31,6 +31,8 @@
 		4E5F22D21937312F00390188 /* icon6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5F22CB1937312F00390188 /* icon6.jpeg */; };
 		4E5F22D31937312F00390188 /* icon7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4E5F22CC1937312F00390188 /* icon7.jpeg */; };
 		4E931AC01938490E000DAD4B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5F22D41937406800390188 /* Accelerate.framework */; };
+		BD22B95B1939AEC500CC7F55 /* btSimpleMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD22B95A1939AEC500CC7F55 /* btSimpleMenuItem.m */; };
+		BD22B9601939E63100CC7F55 /* author.png in Resources */ = {isa = PBXBuildFile; fileRef = BD22B95F1939E63100CC7F55 /* author.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,9 @@
 		4E5F22CB1937312F00390188 /* icon6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon6.jpeg; path = images/icon6.jpeg; sourceTree = "<group>"; };
 		4E5F22CC1937312F00390188 /* icon7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon7.jpeg; path = images/icon7.jpeg; sourceTree = "<group>"; };
 		4E5F22D41937406800390188 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		BD22B9591939AEC500CC7F55 /* btSimpleMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = btSimpleMenuItem.h; path = btSimpleSideMenu/btSimpleMenuItem.h; sourceTree = "<group>"; };
+		BD22B95A1939AEC500CC7F55 /* btSimpleMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = btSimpleMenuItem.m; path = btSimpleSideMenu/btSimpleMenuItem.m; sourceTree = "<group>"; };
+		BD22B95F1939E63100CC7F55 /* author.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = author.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +188,8 @@
 			children = (
 				4E5F22BD1936FCEE00390188 /* btSimpleSideMenu.h */,
 				4E5F22BE1936FCEE00390188 /* btSimpleSideMenu.m */,
+				BD22B9591939AEC500CC7F55 /* btSimpleMenuItem.h */,
+				BD22B95A1939AEC500CC7F55 /* btSimpleMenuItem.m */,
 			);
 			name = btSimpleSideMenu;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 		4E5F22C51937311F00390188 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				BD22B95F1939E63100CC7F55 /* author.png */,
 				4E5F22C61937312F00390188 /* icon1.jpeg */,
 				4E5F22C71937312F00390188 /* icon2.jpeg */,
 				4E5F22C81937312F00390188 /* icon3.jpeg */,
@@ -285,6 +293,7 @@
 				4E5F22D31937312F00390188 /* icon7.jpeg in Resources */,
 				4E5F22D11937312F00390188 /* icon5.jpeg in Resources */,
 				4E5F22D21937312F00390188 /* icon6.jpeg in Resources */,
+				BD22B9601939E63100CC7F55 /* author.png in Resources */,
 				4E5F22981936F6B900390188 /* Images.xcassets in Resources */,
 				4E5F22B81936F8F600390188 /* backGround.jpg in Resources */,
 				4E5F22CE1937312F00390188 /* icon2.jpeg in Resources */,
@@ -308,6 +317,7 @@
 			files = (
 				4E5F22961936F6B900390188 /* btAppDelegate.m in Sources */,
 				4E5F22921936F6B900390188 /* main.m in Sources */,
+				BD22B95B1939AEC500CC7F55 /* btSimpleMenuItem.m in Sources */,
 				4E5F22B61936F76E00390188 /* btViewController.m in Sources */,
 				4E5F22BF1936FCEE00390188 /* btSimpleSideMenu.m in Sources */,
 			);

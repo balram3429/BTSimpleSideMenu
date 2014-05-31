@@ -10,16 +10,34 @@
 #define MENU_WIDTH 175
 
 #import "btSimpleSideMenu.h"
+#import <QuartzCore/QuartzCore.h>
+#import <Accelerate/Accelerate.h>
 
 @implementation btSimpleSideMenu
 
 #pragma -mark public methods
+
+-(instancetype) initWithItem:(NSArray *)items addToViewController:(id)sender {
+    if ((self = [super init])) {
+        // perform the other initialization of items.
+        [self commonInit:sender];
+        itemsArray = items;
+    }
+    return self;
+}
+
 -(instancetype)initWithItemTitles:(NSArray *)itemsTitle addToViewController:(UIViewController *)sender {
     
     if ((self = [super init])) {
         // perform the other initialization of items.
         [self commonInit:sender];
-        titleArray = itemsTitle;
+        NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+        for(int i = 0;i<[itemsTitle count]; i++){
+            btSimpleMenuItem *temp = [[btSimpleMenuItem alloc]initWithTitle:[itemsTitle objectAtIndex:i]
+                                                                      image:nil onCompletion:nil];
+            [tempArray addObject:temp];
+        }
+        itemsArray = tempArray;
     }
     return self;
 }
@@ -28,8 +46,14 @@
     if ((self = [super init])) {
         // perform the other initialization of items.
         [self commonInit:sender];
-        titleArray = itemsTitle;
-        imageArray = itemsImage;
+        NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+        for(int i = 0;i<[itemsTitle count]; i++){
+            btSimpleMenuItem *temp = [[btSimpleMenuItem alloc]initWithTitle:[itemsTitle objectAtIndex:i]
+                                                                      image:[itemsImage objectAtIndex:i]
+                                                               onCompletion:nil];
+            [tempArray addObject:temp];
+        }
+        itemsArray = tempArray;
     }
     return self;
 }
@@ -49,6 +73,8 @@
             menuTable.frame = CGRectMake(menuTable.frame.origin.x, menuTable.frame.origin.y+15, width, height);
             menuTable.alpha = 1;
             backGroundImage.alpha = 1;
+        } completion:^(BOOL finished) {
+            
         }];
         isOpen = YES;
     }
@@ -69,7 +95,7 @@
 #pragma -mark tableView Delegates
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [titleArray count];
+    return [itemsArray count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,9 +103,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [self.delegate btSimpleSideMenu:self didSelectItemAtIndex:indexPath.row];
     [self.delegate btSimpleSideMenu:self selectedItemTitle:[titleArray objectAtIndex:indexPath.row]];
+    _selectedItem = [itemsArray objectAtIndex:indexPath.row];
     [self hide];
+    if (_selectedItem.block) {
+        BOOL success= YES;
+        _selectedItem.block(success, _selectedItem);
+    }
     [menuTable deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -92,12 +124,14 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.backgroundColor = [UIColor clearColor];
     }
-    cell.textLabel.text = [titleArray objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    btSimpleMenuItem *item = [itemsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.title;
+    cell.textLabel.textColor = [UIColor colorWithWhite:0.2 alpha:1];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir Next" size:14];
     
-    if(imageArray){
-        cell.imageView.image = [self reducedImage:[imageArray objectAtIndex:indexPath.row]];
+    if(item.image){
+        cell.imageView.image = [self reducedImage:item.image];
         cell.imageView.frame = GENERIC_IMAGE_FRAME;
         
         cell.imageView.layer.borderWidth = 2;
@@ -125,15 +159,11 @@
         menuTable = [[UITableView alloc]initWithFrame:CGRectMake(xAxis, yAxis-15, width, height) style:UITableViewStyleGrouped];
     }
     
-    backGroundImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backGround.jpg"]];
+    screenShotImage = [sender.view screenshot];
+    blurredImage = [screenShotImage blurredImageWithRadius:10.0f iterations:3 tintColor:nil];
+    backGroundImage = [[UIImageView alloc]initWithImage:blurredImage];
     backGroundImage.frame = CGRectMake(0,0, width, height);
     [self addSubview:backGroundImage];
-    
-    screenShotImage = [self superScreenshot:sender.view];
-    screenShotView = [[UIImageView alloc]initWithImage:screenShotImage];
-    blurredImage = [self blurredImageWithRadius:10.0 iterations:5 tintColor:[UIColor blackColor]];
-    backGroundImage.image = blurredImage;
-    backGroundImage.alpha = 0;
     
     [menuTable setBackgroundColor:[UIColor clearColor]];
     [menuTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -181,10 +211,12 @@
     return tempImage;
 
 }
+@end
 
+@implementation UIView (bt_screenshot)
 -(UIImage *)screenshot
 {
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(MENU_WIDTH, [UIScreen mainScreen].bounds.size.height), NO, [UIScreen mainScreen].scale);
     
     if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
         
@@ -207,42 +239,21 @@
     return image;
 }
 
-- (UIImage *)superScreenshot:(UIView *)sender {
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, [UIScreen mainScreen].scale);
-    
-    if ([sender respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-        
-        NSInvocation* invoc = [NSInvocation invocationWithMethodSignature:
-                               [sender methodSignatureForSelector:
-                                @selector(drawViewHierarchyInRect:afterScreenUpdates:)]];
-        [invoc setTarget:self];
-        [invoc setSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)];
-        CGRect arg2 = sender.bounds;
-        BOOL arg3 = YES;
-        [invoc setArgument:&arg2 atIndex:2];
-        [invoc setArgument:&arg3 atIndex:3];
-        [invoc invoke];
-    } else {
-        [sender.layer renderInContext:UIGraphicsGetCurrentContext()];
-    }
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
+@end
 
-}
+@implementation UIImage (bt_blurrEffect)
 
 - (UIImage *)blurredImageWithRadius:(CGFloat)radius iterations:(NSUInteger)iterations tintColor:(UIColor *)tintColor
 {
     //image must be nonzero size
-    if (floorf(screenShotView.frame.size.width) * floorf(screenShotView.frame.size.height) <= 0.0f) return screenShotView.image;
+    if (floorf(self.size.width) * floorf(self.size.height) <= 0.0f) return self;
     
     //boxsize must be an odd integer
-    uint32_t boxSize = (uint32_t)(radius * screenShotView.image.scale);
+    uint32_t boxSize = (uint32_t)(radius * self.scale);
     if (boxSize % 2 == 0) boxSize ++;
     
     //create image buffers
-    CGImageRef imageRef = screenShotView.image.CGImage;
+    CGImageRef imageRef = self.CGImage;
     vImage_Buffer buffer1, buffer2;
     buffer1.width = buffer2.width = CGImageGetWidth(imageRef);
     buffer1.height = buffer2.height = CGImageGetHeight(imageRef);
@@ -290,14 +301,14 @@
     
     //create image from context
     imageRef = CGBitmapContextCreateImage(ctx);
-    UIImage *image = [UIImage imageWithCGImage:imageRef scale:screenShotView.image.scale orientation:screenShotView.image.imageOrientation];
+    UIImage *image = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
     CGImageRelease(imageRef);
     CGContextRelease(ctx);
     free(buffer1.data);
+    //    UIImage *image = [[UIImage alloc]init];
     return image;
 }
 
-
-
 @end
+
 
