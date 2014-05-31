@@ -5,10 +5,7 @@ This is a simple side menu for iOS
 
 Based on the UITableView, this menu provides a simple approach of creating a side menu for iOS apps.
 
-<img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen1.jpg" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
-
-<img src="https://github.com/balram3429/btSimpleSideMenu/blob/master/btSimpleSideMenuDemo/raw/screen2.jpg" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
-
+<img src="https://raw.githubusercontent.com/balram3429/btSimpleSideMenu/master/btSimpleSideMenuDemo/raw/btSimpleSideMenu.png" alt="btSimpleSideMenu Screenshot" width="320" height="568" />
 
 ## Requirements
 * Xcode 5 or higher
@@ -20,17 +17,18 @@ Based on the UITableView, this menu provides a simple approach of creating a sid
 Build and run the `btSimpleSideMenuDemo` project in Xcode to see `btSimpleSideMenu` in action. The project by default uses left & right swipes to show and hide the menu & a doubble tap gesture to toggle the state.
 
 ## Installation
-  1. Drag the file `btSimpleSideMenu.h` and `'btSimpleSideMenu.m` to your project folder.
+  1. Drag the file `btSimpleSideMenu.h / btSimpleSideMenu.m ` and `btSimpleMenuItem.h / btSimpleMenuItem.m` to your project folder.
   2. Maken an import statement for the file as `#import"btSimpleSideMenu.h"` .
-  3. Add to your project the `QuartzCore framework` & `Accelerate Framework`.
-  4. In your viewController, use these method to initialize the menu with the titles & images as well.
+  3. Add to your project the `QuartzCore framework` & `Accelerate Framework` & make an import statement for both.
+
+## Initialization with Delegate pattern
+  4. For delegate pattern, use these method to initialize the menu with the titles & images as well, in your viewController.
 
 ```objective-c
 -(instancetype) initWithItemTitles:(NSArray *)itemsTitle addToViewController:(id)sender;
 -(instancetype) initWithItemTitles:(NSArray *)itemsTitle andItemImages:(NSArray *)itemsImage addToViewController:(UIViewController *)sender;
 ```
 
-  
 ```objective-c
 btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"] addToViewController:self];
 [sideMenu toggleMenu];
@@ -58,9 +56,40 @@ You can implement `btSimpleSideMenuDelegate` protocol to receive the following m
 -(void)btSimpleSideMenu:(btSimpleSideMenu *)menu selectedItemTitle:(NSString *)title;
 ```
 
+## Initialization with callback Using Blocks
+  1. For callback using blocks, use these method to initialize the each menu item with tiles, images & block.
+  
+```objective-c
+    btSimpleMenuItem *item1 = [[btSimpleMenuItem alloc]initWithTitle:@"One"
+                                                               image:[UIImage imageNamed:@"icon1.jpeg"]
+                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                            
+                                                            NSLog(@"I am Item 1");
+                                                        }];
+    
+    btSimpleMenuItem *item2 = [[btSimpleMenuItem alloc]initWithTitle:@"Two"
+                                                               image:[UIImage imageNamed:@"icon2.jpeg"]
+                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                            
+                                                            NSLog(@"I am Item 2");
+                                                        }];
+    
+    btSimpleMenuItem *item3 = [[btSimpleMenuItem alloc]initWithTitle:@"Three"
+                                                               image:[UIImage imageNamed:@"icon3.jpeg"]
+                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                            
+                                                            NSLog(@"I am Item 3");
+                                                        }];
+    
+    btSimpleSideMenu *sideMenu = [[btSimpleSideMenu alloc]initWithItem:@[item1, item2, item3]
+                                                   addToViewController:self];
+
+```
 ## Contact
 
 - tiwari.balram@gmail.com
+- <A HREF = "http://stackoverflow.com/users/1307844/balram-tiwari"> @stackOverflow </a>
+- <a href = "https://itunes.apple.com/us/artist/balram-tiwari/id693049567"> @Apps Store </a>
 
 ## License
 
