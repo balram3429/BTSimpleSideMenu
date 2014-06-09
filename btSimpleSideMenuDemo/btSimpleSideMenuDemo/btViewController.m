@@ -60,48 +60,48 @@
     sideMenu.delegate = self;
     
     btSimpleMenuItem *item1 = [[btSimpleMenuItem alloc]initWithTitle:@"One"
-                                                               image:[UIImage imageNamed:@"icon1.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon1.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 1");
                                                         }];
     
     btSimpleMenuItem *item2 = [[btSimpleMenuItem alloc]initWithTitle:@"Two"
-                                                               image:[UIImage imageNamed:@"icon2.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon2.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 2");
                                                         }];
     
     btSimpleMenuItem *item3 = [[btSimpleMenuItem alloc]initWithTitle:@"Three"
-                                                               image:[UIImage imageNamed:@"icon3.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon3.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 3");
                                                         }];
     
     btSimpleMenuItem *item4 = [[btSimpleMenuItem alloc]initWithTitle:@"Four"
-                                                               image:[UIImage imageNamed:@"icon4.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon4.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             NSLog(@"I am Item 4");
                                                         }];
     
     btSimpleMenuItem *item5 = [[btSimpleMenuItem alloc]initWithTitle:@"Five"
-                                                               image:[UIImage imageNamed:@"icon5.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon5.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 5");
                                                         }];
     
     btSimpleMenuItem *item6 = [[btSimpleMenuItem alloc]initWithTitle:@"Six"
-                                                               image:[UIImage imageNamed:@"icon6.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon6.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 6");
                                                         }];
     
     btSimpleMenuItem *item7 = [[btSimpleMenuItem alloc]initWithTitle:@"Seven"
-                                                               image:[UIImage imageNamed:@"icon7.jpeg"]
+                                                               image:[UIImage imageNamed:@"icon7.png"]
                                                         onCompletion:^(BOOL success, btSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 7");

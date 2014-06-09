@@ -15,6 +15,7 @@ typedef void (^completion)(BOOL success, btSimpleMenuItem *item);
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, copy) completion block;
 
 -(id)initWithTitle:(NSString *)title image:(UIImage *)image onCompletion:(completion)completionBlock;

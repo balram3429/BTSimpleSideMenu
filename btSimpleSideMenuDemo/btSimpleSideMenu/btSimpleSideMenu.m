@@ -72,6 +72,7 @@
             self.frame = CGRectMake(xAxis, yAxis, width, height);
             menuTable.frame = CGRectMake(menuTable.frame.origin.x, menuTable.frame.origin.y+15, width, height);
             menuTable.alpha = 1;
+            backGroundImage.frame = CGRectMake(0, 0, width, height);
             backGroundImage.alpha = 1;
         } completion:^(BOOL finished) {
             
@@ -87,6 +88,7 @@
             menuTable.frame = CGRectMake(-menuTable.frame.origin.x, menuTable.frame.origin.y-15, width, height);
             menuTable.alpha = 0;
             backGroundImage.alpha = 0;
+            backGroundImage.frame = CGRectMake(width, 0, width, height);
         }];
         isOpen = NO;
     }
@@ -115,30 +117,54 @@
     [menuTable deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#define MAIN_VIEW_TAG 1
+#define TITLE_LABLE_TAG 2
+#define IMAGE_VIEW_TAG 3
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *identifier = @"cell";
+    UIView *circleView;
+    UILabel *titleLabel;
+    UIImageView *imageView;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    btSimpleMenuItem *item = [itemsArray objectAtIndex:indexPath.row];
     
     if(cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.backgroundColor = [UIColor clearColor];
-    }
-    
-    btSimpleMenuItem *item = [itemsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = item.title;
-    cell.textLabel.textColor = [UIColor colorWithWhite:0.2 alpha:1];
-    cell.textLabel.font = [UIFont fontWithName:@"Avenir Next" size:14];
-    
-    if(item.image){
-        cell.imageView.image = [self reducedImage:item.image];
-        cell.imageView.frame = GENERIC_IMAGE_FRAME;
         
-        cell.imageView.layer.borderWidth = 2;
-        cell.imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2;
-        cell.imageView.clipsToBounds = YES;
+        circleView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 55, 55)];
+        circleView.tag = MAIN_VIEW_TAG;
+        circleView.backgroundColor = [UIColor clearColor];
+        circleView.layer.borderWidth = 0.5;
+        circleView.layer.borderColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
+        circleView.layer.cornerRadius = circleView.bounds.size.height/2;
+        circleView.clipsToBounds = YES;
+        
+        [cell.contentView addSubview:circleView];
+        
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(85, 10.0, 120, 60)];
+        titleLabel.tag = TITLE_LABLE_TAG;
+        titleLabel.textColor = [UIColor colorWithWhite:0.2 alpha:1];
+        titleLabel.font = [UIFont fontWithName:@"Avenir Next" size:16];
+        
+        [cell.contentView addSubview:titleLabel];
+        
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
+        imageView.tag = IMAGE_VIEW_TAG;
+        imageView.center = circleView.center;
+        [cell.contentView addSubview:imageView];
+    }else {
+        
+        circleView = (UIView *)[cell.contentView viewWithTag:MAIN_VIEW_TAG];
+        titleLabel = (UILabel *)[cell.contentView viewWithTag:TITLE_LABLE_TAG];
+        imageView = (UIImageView *)[cell.contentView viewWithTag:IMAGE_VIEW_TAG];
     }
+    
+    titleLabel.text = item.title;
+    imageView.image = item.imageView.image;
     return cell;
 }
 
@@ -160,9 +186,10 @@
     }
     
     screenShotImage = [sender.view screenshot];
-    blurredImage = [screenShotImage blurredImageWithRadius:10.0f iterations:3 tintColor:nil];
+    blurredImage = [screenShotImage blurredImageWithRadius:10.0f iterations:5  tintColor:nil];
     backGroundImage = [[UIImageView alloc]initWithImage:blurredImage];
-    backGroundImage.frame = CGRectMake(0,0, width, height);
+    backGroundImage.frame = CGRectMake(width,0, width, height);
+    backGroundImage.alpha = 0;
     [self addSubview:backGroundImage];
     
     [menuTable setBackgroundColor:[UIColor clearColor]];
@@ -194,7 +221,7 @@
 -(UIImage *)reducedImage:(UIImage *)srcImage{
     UIImage *image = srcImage;
     UIImage *tempImage = nil;
-    CGSize targetSize = CGSizeMake(40,40);
+    CGSize targetSize = CGSizeMake(20,20);
     UIGraphicsBeginImageContext(targetSize);
     
     CGRect thumbnailRect = CGRectMake(0, 0, 0, 0);
