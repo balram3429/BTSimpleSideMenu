@@ -107,7 +107,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.delegate btSimpleSideMenu:self didSelectItemAtIndex:indexPath.row];
-    [self.delegate btSimpleSideMenu:self selectedItemTitle:[titleArray objectAtIndex:indexPath.row]];
+    
+    [self.delegate btSimpleSideMenu:self selectedItemTitle:[[itemsArray objectAtIndex:indexPath.row] title]];
+    //[self.delegate btSimpleSideMenu:self selectedItemTitle:[titleArray objectAtIndex:indexPath.row]];
     _selectedItem = [itemsArray objectAtIndex:indexPath.row];
     [self hide];
     if (_selectedItem.block) {
