@@ -1,14 +1,14 @@
 //
-//  btSimpleMenuItem.m
-//  btSimpleSideMenuDemo
+//  BTSimpleMenuItem.m
+//  BTSimpleSideMenuDemo
 //
 //  Created by Balram Tiwari on 31/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.
 //
 
-#import "btSimpleMenuItem.h"
+#import "BTSimpleMenuItem.h"
 
-@implementation btSimpleMenuItem
+@implementation BTSimpleMenuItem
 
 -(id)initWithTitle:(NSString *)title image:(UIImage *)image onCompletion:(completion)completionBlock;
 {

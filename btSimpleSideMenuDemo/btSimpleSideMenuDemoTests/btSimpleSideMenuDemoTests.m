@@ -1,6 +1,6 @@
 //
-//  btSimpleSideMenuDemoTests.m
-//  btSimpleSideMenuDemoTests
+//  BTSimpleSideMenuDemoTests.m
+//  BTSimpleSideMenuDemoTests
 //
 //  Created by Balram on 29/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface btSimpleSideMenuDemoTests : XCTestCase
+@interface BTSimpleSideMenuDemoTests : XCTestCase
 
 @end
 
-@implementation btSimpleSideMenuDemoTests
+@implementation BTSimpleSideMenuDemoTests
 
 - (void)setUp
 {

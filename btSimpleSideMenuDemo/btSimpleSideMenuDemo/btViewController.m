@@ -1,6 +1,6 @@
 //
 //  btViewController.m
-//  btSimpleSideMenuDemo
+//  BTSimpleSideMenuDemo
 //
 //  Created by Balram on 29/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.
@@ -9,10 +9,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Accelerate/Accelerate.h>
 #import "btViewController.h"
-#import "btSimpleSideMenu.h"
+#import "BTSimpleSideMenu.h"
 
-@interface btViewController () <btSimpleSideMenuDelegate>
-@property(nonatomic)btSimpleSideMenu *sideMenu;
+@interface btViewController () <BTSimpleSideMenuDelegate>
+@property(nonatomic)BTSimpleSideMenu *sideMenu;
 @end
 
 @implementation btViewController
@@ -46,7 +46,7 @@
     author.layer.cornerRadius =  author.frame.size.width/2;
     
     
-//    sideMenu = [[btSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"]
+//    sideMenu = [[BTSimpleSideMenu alloc]initWithItemTitles:@[@"One", @"Two", @"Three", @"Four",@"Five", @"Six", @"Seven"]
 //                                             andItemImages:@[
 //                                                             [UIImage imageNamed:@"icon1.jpeg"],
 //                                                             [UIImage imageNamed:@"icon2.jpeg"],
@@ -59,56 +59,56 @@
 //                                       addToViewController:self];
     sideMenu.delegate = self;
     
-    btSimpleMenuItem *item1 = [[btSimpleMenuItem alloc]initWithTitle:@"One"
+    BTSimpleMenuItem *item1 = [[BTSimpleMenuItem alloc]initWithTitle:@"One"
                                                                image:[UIImage imageNamed:@"icon1.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 1");
                                                         }];
     
-    btSimpleMenuItem *item2 = [[btSimpleMenuItem alloc]initWithTitle:@"Two"
+    BTSimpleMenuItem *item2 = [[BTSimpleMenuItem alloc]initWithTitle:@"Two"
                                                                image:[UIImage imageNamed:@"icon2.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 2");
                                                         }];
     
-    btSimpleMenuItem *item3 = [[btSimpleMenuItem alloc]initWithTitle:@"Three"
+    BTSimpleMenuItem *item3 = [[BTSimpleMenuItem alloc]initWithTitle:@"Three"
                                                                image:[UIImage imageNamed:@"icon3.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 3");
                                                         }];
     
-    btSimpleMenuItem *item4 = [[btSimpleMenuItem alloc]initWithTitle:@"Four"
+    BTSimpleMenuItem *item4 = [[BTSimpleMenuItem alloc]initWithTitle:@"Four"
                                                                image:[UIImage imageNamed:@"icon4.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             NSLog(@"I am Item 4");
                                                         }];
     
-    btSimpleMenuItem *item5 = [[btSimpleMenuItem alloc]initWithTitle:@"Five"
+    BTSimpleMenuItem *item5 = [[BTSimpleMenuItem alloc]initWithTitle:@"Five"
                                                                image:[UIImage imageNamed:@"icon5.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 5");
                                                         }];
     
-    btSimpleMenuItem *item6 = [[btSimpleMenuItem alloc]initWithTitle:@"Six"
+    BTSimpleMenuItem *item6 = [[BTSimpleMenuItem alloc]initWithTitle:@"Six"
                                                                image:[UIImage imageNamed:@"icon6.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 6");
                                                         }];
     
-    btSimpleMenuItem *item7 = [[btSimpleMenuItem alloc]initWithTitle:@"Seven"
+    BTSimpleMenuItem *item7 = [[BTSimpleMenuItem alloc]initWithTitle:@"Seven"
                                                                image:[UIImage imageNamed:@"icon7.png"]
-                                                        onCompletion:^(BOOL success, btSimpleMenuItem *item) {
+                                                        onCompletion:^(BOOL success, BTSimpleMenuItem *item) {
                                                             
                                                             NSLog(@"I am Item 7");
                                                             
                                                         }];
     
-    sideMenu = [[btSimpleSideMenu alloc]initWithItem:@[item1, item2, item3, item4, item5, item6, item7]
+    sideMenu = [[BTSimpleSideMenu alloc]initWithItem:@[item1, item2, item3, item4, item5, item6, item7]
                                  addToViewController:self];
     
     
@@ -128,13 +128,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma -mark btSimpleSideMenuDelegate
+#pragma -mark BTSimpleSideMenuDelegate
 
--(void)btSimpleSideMenu:(btSimpleSideMenu *)menu didSelectItemAtIndex:(NSInteger)index {
+-(void)BTSimpleSideMenu:(BTSimpleSideMenu *)menu didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"Item Cliecked : %ld", (long)index);
 }
 
--(void)btSimpleSideMenu:(btSimpleSideMenu *)menu selectedItemTitle:(NSString *)title {
+-(void)BTSimpleSideMenu:(BTSimpleSideMenu *)menu selectedItemTitle:(NSString *)title {
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Menu Clicked"
                                                    message:[NSString stringWithFormat:@"Item Title : %@", title]
                                                   delegate:self

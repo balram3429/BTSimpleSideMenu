@@ -1,6 +1,6 @@
 //
 //  main.m
-//  btSimpleSideMenuDemo
+//  BTSimpleSideMenuDemo
 //
 //  Created by Balram on 29/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.

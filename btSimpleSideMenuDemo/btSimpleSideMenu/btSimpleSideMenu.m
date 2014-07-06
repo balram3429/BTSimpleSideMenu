@@ -1,6 +1,6 @@
 //
-//  btSimpleSideMenu.m
-//  btSimpleSideMenuDemo
+//  BTSimpleSideMenu.m
+//  BTSimpleSideMenuDemo
 //  Created by Balram on 29/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.
 //
@@ -9,11 +9,11 @@
 #define GENERIC_IMAGE_FRAME CGRectMake(0, 0, 40, 40)
 #define MENU_WIDTH 175
 
-#import "btSimpleSideMenu.h"
+#import "BTSimpleSideMenu.h"
 #import <QuartzCore/QuartzCore.h>
 #import <Accelerate/Accelerate.h>
 
-@implementation btSimpleSideMenu
+@implementation BTSimpleSideMenu
 
 #pragma -mark public methods
 
@@ -33,7 +33,7 @@
         [self commonInit:sender];
         NSMutableArray *tempArray = [[NSMutableArray alloc]init];
         for(int i = 0;i<[itemsTitle count]; i++){
-            btSimpleMenuItem *temp = [[btSimpleMenuItem alloc]initWithTitle:[itemsTitle objectAtIndex:i]
+            BTSimpleMenuItem *temp = [[BTSimpleMenuItem alloc]initWithTitle:[itemsTitle objectAtIndex:i]
                                                                       image:nil onCompletion:nil];
             [tempArray addObject:temp];
         }
@@ -48,7 +48,7 @@
         [self commonInit:sender];
         NSMutableArray *tempArray = [[NSMutableArray alloc]init];
         for(int i = 0;i<[itemsTitle count]; i++){
-            btSimpleMenuItem *temp = [[btSimpleMenuItem alloc]initWithTitle:[itemsTitle objectAtIndex:i]
+            BTSimpleMenuItem *temp = [[BTSimpleMenuItem alloc]initWithTitle:[itemsTitle objectAtIndex:i]
                                                                       image:[itemsImage objectAtIndex:i]
                                                                onCompletion:nil];
             [tempArray addObject:temp];
@@ -106,10 +106,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.delegate btSimpleSideMenu:self didSelectItemAtIndex:indexPath.row];
+    [self.delegate BTSimpleSideMenu:self didSelectItemAtIndex:indexPath.row];
     
-    [self.delegate btSimpleSideMenu:self selectedItemTitle:[[itemsArray objectAtIndex:indexPath.row] title]];
-    //[self.delegate btSimpleSideMenu:self selectedItemTitle:[titleArray objectAtIndex:indexPath.row]];
+    [self.delegate BTSimpleSideMenu:self selectedItemTitle:[[itemsArray objectAtIndex:indexPath.row] title]];
+    //[self.delegate BTSimpleSideMenu:self selectedItemTitle:[titleArray objectAtIndex:indexPath.row]];
     _selectedItem = [itemsArray objectAtIndex:indexPath.row];
     [self hide];
     if (_selectedItem.block) {
@@ -131,7 +131,7 @@
     UIImageView *imageView;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    btSimpleMenuItem *item = [itemsArray objectAtIndex:indexPath.row];
+    BTSimpleMenuItem *item = [itemsArray objectAtIndex:indexPath.row];
     
     if(cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];

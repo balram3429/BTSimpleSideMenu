@@ -1,6 +1,6 @@
 //
-//  btSimpleMenuItem.h
-//  btSimpleSideMenuDemo
+//  BTSimpleMenuItem.h
+//  BTSimpleSideMenuDemo
 //
 //  Created by Balram Tiwari on 31/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class btSimpleMenuItem;
-typedef void (^completion)(BOOL success, btSimpleMenuItem *item);
+@class BTSimpleMenuItem;
+typedef void (^completion)(BOOL success, BTSimpleMenuItem *item);
 
-@interface btSimpleMenuItem : NSObject
+@interface BTSimpleMenuItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) UIImage *image;

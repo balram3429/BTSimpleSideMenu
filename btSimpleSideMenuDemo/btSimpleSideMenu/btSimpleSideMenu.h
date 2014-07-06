@@ -1,21 +1,21 @@
 //
-//  btSimpleSideMenu.h
-//  btSimpleSideMenuDemo
+//  BTSimpleSideMenu.h
+//  BTSimpleSideMenuDemo
 //
 //  Created by Balram on 29/05/14.
 //  Copyright (c) 2014 Balram Tiwari. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "btSimpleMenuItem.h"
+#import "BTSimpleMenuItem.h"
 
-@class btSimpleSideMenu;
+@class BTSimpleSideMenu;
 
-@protocol btSimpleSideMenuDelegate <NSObject>
+@protocol BTSimpleSideMenuDelegate <NSObject>
 
 @optional
--(void)btSimpleSideMenu:(btSimpleSideMenu *)menu didSelectItemAtIndex:(NSInteger)index;
--(void)btSimpleSideMenu:(btSimpleSideMenu *)menu selectedItemTitle:(NSString *)title;
+-(void)BTSimpleSideMenu:(BTSimpleSideMenu *)menu didSelectItemAtIndex:(NSInteger)index;
+-(void)BTSimpleSideMenu:(BTSimpleSideMenu *)menu selectedItemTitle:(NSString *)title;
 
 @end
 
@@ -28,7 +28,7 @@
 - (UIImage *)blurredImageWithRadius:(CGFloat)radius iterations:(NSUInteger)iterations tintColor:(UIColor *)tintColor;
 @end
 
-@interface btSimpleSideMenu : UIView<UITableViewDelegate, UITableViewDataSource> {
+@interface BTSimpleSideMenu : UIView<UITableViewDelegate, UITableViewDataSource> {
     @private
     UITableView *menuTable;
     CGFloat xAxis, yAxis,height, width;
@@ -45,8 +45,8 @@
     
 }
 
-@property (nonatomic, retain) btSimpleMenuItem *selectedItem;
-@property(nonatomic, weak) id <btSimpleSideMenuDelegate> delegate;
+@property (nonatomic, retain) BTSimpleMenuItem *selectedItem;
+@property(nonatomic, weak) id <BTSimpleSideMenuDelegate> delegate;
 
 -(instancetype) initWithItem:(NSArray *)items addToViewController:(id)sender;
 -(instancetype) initWithItemTitles:(NSArray *)itemsTitle addToViewController:(id)sender;
