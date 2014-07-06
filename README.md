@@ -1,4 +1,4 @@
-btSimpleSideMenu
+BTSimpleSideMenu
 ================
 
 This is a simple side menu for iOS. Includes Blur background, callbacks using blocks & supports delegate patterns as well. Based on the UITableView, this menu provides a simple approach of creating a side menu for iOS apps.
